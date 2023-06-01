@@ -1,0 +1,30 @@
+{
+  "project_info": {
+    "project_number": "732857361550",
+    "firebase_url": "https://smartac-9d1a0-default-rtdb.firebaseio.com",
+    "project_id": "smartac-9d1a0",
+    "storage_bucket": "smartac-9d1a0.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:732857361550:android:7cb07da78884a9d53d15df",
+        "android_client_info": {
+          "package_name": "com.pervasive.smartac"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyD8A1gqPIlUQfyLejE1n9vjHWf0oh1Af_k"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

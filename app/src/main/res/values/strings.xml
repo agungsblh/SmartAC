@@ -1,3 +1,5 @@
 <resources>
     <string name="app_name">SmartAc</string>
+    <string name="derajat_celcius">°C</string>
+    <string name="satuan_kelembapan">%</string>
 </resources>
