@@ -17,9 +17,7 @@ class MainActivity : AppCompatActivity() {
         setContentView(binding.root)
 
         getSuhuDanKelembapanRuangan()
-
         changeImageAc(false)
-
     }
 
     private fun changeImageAc(on:Boolean){
@@ -37,13 +35,21 @@ class MainActivity : AppCompatActivity() {
         ref.child("suhu_ruangan").get().addOnSuccessListener {
             GlobalData.suhu_ruangan = it.value.toString().toInt()
             binding.suhuRuangan.text  = it.value.toString()+resources.getString(R.string.derajat_celcius)
+
             ref.child("kelembapan_air").get().addOnSuccessListener {
                 GlobalData.kelembapan_air = it.value.toString().toInt()
                 binding.kelembapanUdara.text  = it.value.toString()+resources.getString(R.string.satuan_kelembapan)
-                loading.isDismiss()
-            }.addOnFailureListener {
-                loading.isDismiss()
             }
+            ref.child("suhu_ac").get().addOnSuccessListener {
+                GlobalData.suhu_ac = it.value.toString().toInt()
+            }
+            ref.child("suhu_maksimal").get().addOnSuccessListener {
+                GlobalData.suhu_maksimal = it.value.toString().toInt()
+            }
+            ref.child("suhu_minimal").get().addOnSuccessListener {
+                GlobalData.suhu_minimal = it.value.toString().toInt()
+            }
+            loading.isDismiss()
         }.addOnFailureListener {
             loading.isDismiss()
         }
