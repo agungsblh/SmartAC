@@ -1,0 +1,86 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="wrap_content"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:layout_marginStart="25dp"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="25dp"
+        android:layout_marginBottom="40dp"
+        android:background="@drawable/rounded_edittext"
+        android:orientation="vertical">
+
+        <TextView
+            android:id="@+id/judul"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginBottom="10dp"
+            android:fontFamily="@font/poppins_semibold"
+            android:gravity="center"
+            android:layout_marginTop="20dp"
+            android:text="Ubah suhu maksimal"
+            android:textColor="@color/biru"
+            android:textSize="14sp" />
+
+
+        <LinearLayout
+            android:layout_marginHorizontal="20dp"
+            android:layout_marginVertical="20dp"
+            android:layout_gravity="center"
+            android:gravity="center"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:orientation="horizontal">
+            <ImageButton
+                android:id="@+id/kurangi_suhu"
+                android:src="@drawable/ic_remove"
+                android:backgroundTint="@color/biru"
+                app:tint="@color/white"
+                android:background="@drawable/rounded_circle"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+            <TextView
+                android:id="@+id/suhu"
+                android:layout_marginHorizontal="20dp"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:fontFamily="@font/poppins_semibold"
+                android:gravity="center"
+                android:text="12*C"
+                android:textColor="@color/black"
+                android:textSize="14sp" />
+            <ImageButton
+                android:id="@+id/tambah_suhu"
+                android:src="@drawable/ic_add"
+                android:backgroundTint="@color/biru"
+                app:tint="@color/white"
+                android:background="@drawable/rounded_circle"
+                android:layout_width="25dp"
+                android:layout_height="25dp"/>
+        </LinearLayout>
+
+        <Button
+            android:id="@+id/btn_ok"
+            android:layout_width="wrap_content"
+            android:layout_height="45dp"
+            android:layout_gravity="center"
+            android:textColor="@color/white"
+            android:layout_marginStart="45dp"
+            android:layout_marginEnd="45dp"
+            android:layout_marginTop="20dp"
+            android:layout_marginBottom="30dp"
+            android:background="@drawable/rounded_button"
+            android:fontFamily="@font/poppins_semibold"
+            android:maxLines="1"
+            android:text="Ok"
+            android:textAllCaps="false"
+            android:textSize="12sp" />
+    </LinearLayout>
+
+
+</RelativeLayout>
