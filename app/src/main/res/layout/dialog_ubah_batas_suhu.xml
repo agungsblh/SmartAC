@@ -42,8 +42,8 @@
                 android:backgroundTint="@color/biru"
                 app:tint="@color/white"
                 android:background="@drawable/rounded_circle"
-                android:layout_width="25dp"
-                android:layout_height="25dp"/>
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
             <TextView
                 android:id="@+id/suhu"
                 android:layout_marginHorizontal="20dp"
@@ -53,15 +53,15 @@
                 android:gravity="center"
                 android:text="12*C"
                 android:textColor="@color/black"
-                android:textSize="14sp" />
+                android:textSize="18sp" />
             <ImageButton
                 android:id="@+id/tambah_suhu"
                 android:src="@drawable/ic_add"
                 android:backgroundTint="@color/biru"
                 app:tint="@color/white"
                 android:background="@drawable/rounded_circle"
-                android:layout_width="25dp"
-                android:layout_height="25dp"/>
+                android:layout_width="35dp"
+                android:layout_height="35dp"/>
         </LinearLayout>
 
         <Button

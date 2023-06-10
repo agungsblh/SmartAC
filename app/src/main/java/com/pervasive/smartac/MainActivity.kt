@@ -35,12 +35,11 @@ class MainActivity : AppCompatActivity() {
             }
             frameSuhuMaksimal.setOnClickListener {
                 showDialogSuhuMax()
-
             }
         }
     }
-    private fun showDialogSuhuMin(){
-        val view = View.inflate(this, R.layout.dialog_ubah_batas_suhu,null)
+    private fun showDialogSuhuMin() {
+        val view = View.inflate(this, R.layout.dialog_ubah_batas_suhu, null)
         val builder = AlertDialog.Builder(this)
         builder.setView(view)
 
@@ -55,7 +54,8 @@ class MainActivity : AppCompatActivity() {
         var suhuMax = GlobalData.suhu_maksimal
 
         judul.text = "Batas suhu minimal"
-        suhu.text = GlobalData.suhu_minimal.toString()+resources.getString(R.string.derajat_celcius)
+        suhu.text =
+            GlobalData.suhu_minimal.toString() + resources.getString(R.string.derajat_celcius)
 
         dialog.show()
         dialog.setCancelable(true)
@@ -64,27 +64,28 @@ class MainActivity : AppCompatActivity() {
         dialog.window?.setBackgroundDrawableResource(android.R.color.transparent)
 
         btn_tambah.setOnClickListener {
-            if(suhuInt<45){
-                if(suhuInt<suhuMax && (suhuMax-suhuInt)>2)
-                suhuInt=suhuInt+1
-                suhu.text = suhuInt.toString()+resources.getString(R.string.derajat_celcius)
+            if (suhuInt < 45) {
+                if (suhuInt < suhuMax && (suhuMax - suhuInt) > 2) {
+                    suhuInt += 1
+                    suhu.text = suhuInt.toString() + resources.getString(R.string.derajat_celcius)
+                }
             }
-        }
-        btn_kurang.setOnClickListener {
-            if (suhuInt>16){
-                suhuInt=suhuInt-1
-                suhu.text = suhuInt.toString()+resources.getString(R.string.derajat_celcius)
+            btn_kurang.setOnClickListener {
+                if (suhuInt > 16) {
+                    suhuInt = suhuInt - 1
+                    suhu.text = suhuInt.toString() + resources.getString(R.string.derajat_celcius)
+                }
             }
-        }
-        btn_ok.setOnClickListener {
-            loading.startLoading()
-            ref = FirebaseDatabase.getInstance().getReference("Data")
-            val update = mapOf(
-                "suhu_minimal" to suhuInt
-            )
-            ref.updateChildren(update).addOnCompleteListener {
-                loading.isDismiss()
-                dialog.dismiss()
+            btn_ok.setOnClickListener {
+                loading.startLoading()
+                ref = FirebaseDatabase.getInstance().getReference("Data")
+                val update = mapOf(
+                    "suhu_minimal" to suhuInt
+                )
+                ref.updateChildren(update).addOnCompleteListener {
+                    loading.isDismiss()
+                    dialog.dismiss()
+                }
             }
         }
     }
@@ -168,6 +169,15 @@ class MainActivity : AppCompatActivity() {
                         GlobalData.kelembapan_air = snapshot.child("kelembapan_air").getValue().toString().toInt()
                         binding.kelembapanUdara.text  =GlobalData.kelembapan_air.toString()+resources.getString(R.string.satuan_kelembapan)
 
+                        if(snapshot.child("suhu_ruangan").getValue().toString().toInt()>=snapshot.child("suhu_minimal").getValue().toString().toInt()){
+                            changeImageAc(true)
+                            binding.suhuAc.text = "ON"
+                            binding.suhuAc.setTextColor(resources.getColor(R.color.hijau))
+                        }else{
+                            changeImageAc(false)
+                            binding.suhuAc.text = "OFF"
+                            binding.suhuAc.setTextColor(resources.getColor(R.color.black))
+                        }
                         loading.isDismiss()
                     }
                 }
@@ -178,37 +188,4 @@ class MainActivity : AppCompatActivity() {
                 }
             })
     }
-
-
-
-
-
-//    private fun getSuhuDanKelembapanRuangan(){
-//        loading.startLoading()
-//        ref = FirebaseDatabase.getInstance().getReference("Data")
-//        ref.child("suhu_ruangan").get().addOnSuccessListener {
-//            GlobalData.suhu_ruangan = it.value.toString().toInt()
-//            binding.suhuRuangan.text  = it.value.toString()+resources.getString(R.string.derajat_celcius)
-//
-//            ref.child("kelembapan_air").get().addOnSuccessListener {
-//                GlobalData.kelembapan_air = it.value.toString().toInt()
-//                binding.kelembapanUdara.text  = it.value.toString()+resources.getString(R.string.satuan_kelembapan)
-//            }
-//            ref.child("suhu_ac").get().addOnSuccessListener {
-//                GlobalData.suhu_ac = it.value.toString().toInt()
-//                binding.suhuAc.text  = it.value.toString()+resources.getString(R.string.derajat_celcius)
-//            }
-//            ref.child("suhu_maksimal").get().addOnSuccessListener {
-//                GlobalData.suhu_maksimal = it.value.toString().toInt()
-//                binding.suhuMaksimal.text  = it.value.toString()+resources.getString(R.string.derajat_celcius)
-//            }
-//            ref.child("suhu_minimal").get().addOnSuccessListener {
-//                GlobalData.suhu_minimal = it.value.toString().toInt()
-//                binding.suhuMinimal.text  = it.value.toString()+resources.getString(R.string.derajat_celcius)
-//            }
-//            loading.isDismiss()
-//        }.addOnFailureListener {
-//            loading.isDismiss()
-//        }
-//    }
 }
